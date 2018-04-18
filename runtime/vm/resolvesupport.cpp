@@ -976,6 +976,7 @@ illegalAccess:
 					fieldOffset = -1;
 					goto done;
 				}
+#if defined(J9VM_OPT_VALHALLA_VALUE_TYPES)
 				if (J9_ARE_ALL_BITS_SET(resolveFlags, J9_RESOLVE_FLAG_CHECK_VALUE_CLASS)
 					&& J9_ARE_NO_BITS_SET(modifiers, J9_JAVA_FINAL)) {
 					setCurrentExceptionUTF(vmStruct, J9VMCONSTANTPOOL_JAVALANGILLEGALACCESSERROR, NULL);
@@ -983,6 +984,7 @@ illegalAccess:
 					fieldOffset = -1;
 					goto done;
 				}
+#endif /* defined(J9VM_OPT_VALHALLA_VALUE_TYPES) */
 			}
 
 			/* check class constraints */
